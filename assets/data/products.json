@@ -1,0 +1,24 @@
+{
+  "products": [
+    {
+      "id": "a3f1c8e2-7b4d-4e91-9c2a-1f6d8e0b3a47",
+      "name": "Product 1",
+      "price": 100
+    },
+    {
+      "id": "6d2b9f14-c8a0-4f73-a1e5-9b7c3d2e4f18",
+      "name": "Product 2",
+      "price": 200
+    },
+    {
+      "id": "e91a4c76-2d5b-4a08-b6f3-8c1e7d9a0b52",
+      "name": "Product 3",
+      "price": 300
+    },
+    {
+      "id": "4b8e1d30-f6a2-4c59-8d17-3a5e9c2b7f64",
+      "name": "Modified product",
+      "price": 400
+    }
+  ]
+}
