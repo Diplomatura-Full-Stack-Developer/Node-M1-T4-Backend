@@ -1,14 +1,9 @@
 const mongoose = require("mongoose");
-const { randomUUID } = require("crypto");
 
 const { Schema } = mongoose;
 
 const productSchema = new Schema({
-  id: {
-    type: String,
-    default: () => randomUUID(),
-    required: true,
-  },
+
   category: {
     type: String,
     required: true,

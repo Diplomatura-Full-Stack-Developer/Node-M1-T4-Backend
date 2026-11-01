@@ -17,17 +17,13 @@ const getProducts = async () => {
 
 const getProductById = async (id) => {
   try {
-    const product = await productModel.findOne({ id });
+    const product = await productModel.findById(id);
     if (!product) {
       throw new Error("Producto no encontrado: " + id);
     }
     return {
       message: "Producto obtenido correctamente",
-      data: {
-        id: product.id,
-        name: product.name,
-        price: product.price,
-      },
+      data: product,
     };
   } catch (error) {
     throw new Error("Error al obtener el producto: " + error.message);
@@ -54,19 +50,15 @@ const createProduct = async (product) => {
 };
 
 
-const updateProductById = async (id, name, price) => {
+const updateProductById = async (id, body) => {
   try {
-    const product = await productModel.findOneAndUpdate({ id }, { name, price });
+    const product = await productModel.findByIdAndUpdate(id, body);
     if (!product) {
       throw new Error("Error al actualizar el producto: " + id);
     }
     return {
       message: "Producto actualizado correctamente",
-      data: {
-        id: product.id,
-        name: product.name,
-        price: product.price,
-      },
+      data: product,
     };
   } catch (error) {
     throw new Error("Error al actualizar el producto: " + error.message);
@@ -75,7 +67,7 @@ const updateProductById = async (id, name, price) => {
 
 const deleteProductById = async (id) => {
   try {
-    const product = await productModel.findOneAndDelete({ id });
+    const product = await productModel.findByIdAndDelete(id);
     if (!product) {
       return {
         message: "Error al eliminar el producto: " + id,
@@ -84,11 +76,7 @@ const deleteProductById = async (id) => {
     }
     return {
       message: "Producto eliminado correctamente",
-      data: {
-        id: product.id,
-        name: product.name,
-        price: product.price,
-      },
+      data: product,
     };
   } catch (error) {
     throw new Error("Error al eliminar el producto: " + error.message);
