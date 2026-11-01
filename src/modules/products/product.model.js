@@ -9,16 +9,73 @@ const productSchema = new Schema({
     default: () => randomUUID(),
     required: true,
   },
-  name: {
+  category: {
     type: String,
     required: true,
-    unique: true,
+  },
+  brand: {
+    type: String,
+    required: true,
+  },
+  model: {
+    type: String,
+    required: true,
+  },
+  imageUrl: {
+    type: String,
+    required: true,
+  },
+  stock: {
+    type: Number,
+    required: true,
   },
   price: {
     type: Number,
     required: true,
     min: 0,
   },
+  offer: {
+    type: Boolean,
+    default: false,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  features: {
+    type: [String],
+    required: true,
+  },
+  deleted: {
+    type: Boolean,
+    default: false,
+    required: true,
+  },
+  discount: {
+    type: Number,
+    default: 0,
+    required: true,
+    min: 0,
+    max: 40,
+  },
 });
 
+
+// const cartSchema = new Schema({
+//   product: {
+//     type: Schema.Types.ObjectId,
+//     ref: "Product",
+//     required: false,
+//     default: null,
+//   },
+//   quantity: {
+//     type: Number,
+//     required: false,
+//     default: 1,
+//     min: 1,
+//   },
+// });
+
 module.exports = mongoose.model("Product", productSchema);
+// module.exports = mongoose.model("Cart", cartSchema);

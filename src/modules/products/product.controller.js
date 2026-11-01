@@ -24,10 +24,10 @@ const getProductById = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-  const { name, price } = req.body;
+  const product = req.body;
   try {
-    const product = await productService.createProduct(name, price);
-    res.status(200).json(product);
+    const newProduct = await productService.createProduct(product);
+    res.status(200).json(newProduct);
   } catch (error) {
     res.status(500).json({ message: error.message, data: null });
   }
@@ -53,5 +53,7 @@ const deleteProductById = async (req, res) => {
     res.status(500).json({ message: error.message, data: null });
   }
 };
+
+
 
 module.exports = { welcomeProductAPI, getProducts, getProductById, createProduct, updateProductById, deleteProductById };

@@ -1,22 +1,14 @@
 const productModel = require("./product.model.js");
+const productsData = require("../../../assets/data/products.json");
 
 const getProducts = async () => {
   try {
-    const products = await productModel.find();
+    let products = await productModel.find();
     if (products.length === 0) {
-      return {
-        message: "No hay productos",
-        data: null,
-      };
+      await seedProducts();
+      products = await productModel.find();
     }
-    return {
-      message: "Productos obtenidos correctamente",
-      data: products.map((product) => ({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-      })),
-    };
+    return products;
   } catch (error) {
     throw new Error("Error al obtener los productos: " + error.message);
   }
@@ -43,10 +35,10 @@ const getProductById = async (id) => {
 };
 
 
-const createProduct = async (name, price) => {
+const createProduct = async (product) => {
   try {
-    const product = await productModel.create({ name, price });
-    if (!product) {
+    const newProduct = await productModel.create(product);
+    if (!newProduct) {
       return {
         message: "Error al crear el producto",
         data: null,
@@ -54,11 +46,7 @@ const createProduct = async (name, price) => {
     }
     return {
       message: "Producto creado correctamente",
-      data: {
-        id: product.id,
-        name: product.name,
-        price: product.price,
-      },
+      data: newProduct,
     };
   } catch (error) {
     throw new Error("Error al crear el producto: " + error.message);
@@ -107,4 +95,18 @@ const deleteProductById = async (id) => {
   }
 };
 
-module.exports = { getProducts, getProductById, createProduct, deleteProductById, updateProductById };
+
+const seedProducts = async () => {
+  try {
+    productsData.forEach(async (product) => {
+      const newProduct = await createProduct(product);
+      if (!newProduct) {
+        throw new Error("Error al sembrar el producto: " + product.id);
+      }
+    });
+  } catch (error) {
+    throw new Error("Error al sembrar los productos: " + error.message);
+  }
+};
+
+module.exports = { getProducts, getProductById, createProduct, deleteProductById, updateProductById, seedProducts };
