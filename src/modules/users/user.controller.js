@@ -20,6 +20,16 @@ const getUserById = async (req, res) => {
   }
 };
 
+const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await userService.loginUser(email, password);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message, data: null });
+  }
+};
+
 const createUser = async (req, res) => {
   const user = req.body;
   try {
@@ -51,4 +61,4 @@ const deleteUserById = async (req, res) => {
   }
 };
 
-module.exports = { getUsers, getUserById, createUser, updateUserById, deleteUserById };
+module.exports = { getUsers, getUserById, createUser, updateUserById, deleteUserById, loginUser };

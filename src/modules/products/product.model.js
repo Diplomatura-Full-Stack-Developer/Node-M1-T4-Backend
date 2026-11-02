@@ -57,20 +57,5 @@ const productSchema = new Schema({
 });
 
 
-// const cartSchema = new Schema({
-//   product: {
-//     type: Schema.Types.ObjectId,
-//     ref: "Product",
-//     required: false,
-//     default: null,
-//   },
-//   quantity: {
-//     type: Number,
-//     required: false,
-//     default: 1,
-//     min: 1,
-//   },
-// });
 
 module.exports = mongoose.model("Product", productSchema);
-// module.exports = mongoose.model("Cart", cartSchema);
