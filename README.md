@@ -16,7 +16,7 @@ Realizar peticiones reales y preparar ambos entornos para despliegue.
 
 ### Consideraciones:
 
-- Se establece una organización de archivos por funcionalidad o dominio de negocio. Las funcionalidades son las de productos y usuarios.
+- Se establece una organización de archivos por funcionalidad o dominio de negocio. Las funcionalidades son las de productos, usuarios y carrito.
 
 - Se genera una conexion con una base de datos MongoDB.
 
@@ -47,18 +47,12 @@ git clone https://github.com/Diplomatura-Full-Stack-Developer/Node-M1-T4
 2. Instalar las dependencias para Backend y Frontend:
 
 ```bash
-cd Node-M1-T4-Backend
-npm install
-cd ../Node-M1-T4-Frontend
 npm install
 ```
 
 3. Ejecutar el script de la aplicación en modo desarrollo para Backend y Frontend:
 
 ```bash
-cd Node-M1-T4-Backend
-npm run dev
-cd ../Node-M1-T4-Frontend
 npm run dev
 ```
 
@@ -69,6 +63,8 @@ npm run dev
 - Express - Versión 5.3.0 ([https://www.npmjs.com/package/express](https://www.npmjs.com/package/express))
 - Mongoose - Versión 9.11.3 ([https://www.npmjs.com/package/mongoose](https://www.npmjs.com/package/mongoose))
 - MongoDB Compass - Versión 1.40.4 ([https://www.mongodb.com/es/products/compass](https://www.mongodb.com/es/products/compass))
+- Cors - Versión 2.8.6 ([https://www.npmjs.com/package/cors](https://www.npmjs.com/package/cors))
+- Bcrypt - Versión 6.0.0 ([https://www.npmjs.com/package/bcrypt](https://www.npmjs.com/package/bcrypt))
 
 ### Alumno: Rubén Seco
 
