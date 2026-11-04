@@ -97,4 +97,17 @@ const seedProducts = async () => {
   }
 };
 
-module.exports = { getProducts, getProductById, createProduct, deleteProductById, updateProductById, seedProducts };
+const changeStock = async (productId, amount) => {
+  const product = await productModel.findById(productId);
+  if (!product) {
+    throw new Error("Producto no encontrado");
+  }
+  if (product.stock + amount < 0) {
+    throw new Error("Sin stock");
+  }
+  product.stock += amount;
+  await product.save();
+  return product;
+};
+
+module.exports = { getProducts, getProductById, createProduct, deleteProductById, updateProductById, seedProducts, changeStock };

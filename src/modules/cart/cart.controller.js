@@ -1,9 +1,10 @@
 const cartService = require("./cart.service");
+const productService = require("../products/product.service");
 
-const getCartById = async (req, res) => {
+const getCartByUserId = async (req, res) => {
   const { id } = req.params;
   try {
-    const cart = await cartService.getCartById(id);
+    const cart = await cartService.getCartByUserId(id);
     res.status(200).json(cart);
   } catch (error) {
     res.status(500).json({ message: error.message, data: null });
@@ -11,35 +12,37 @@ const getCartById = async (req, res) => {
 };
 
 const createCart = async (req, res) => {
-  const { userId } = req.user;
-  const cart = req.body;
+  const { productId, userId } = req.body;
   try {
-    const newCart = await cartService.createCart(userId, cart);
+    const newCart = await cartService.createCart(userId, productId);
+    await productService.changeStock(productId, -1);
     res.status(200).json(newCart);
   } catch (error) {
     res.status(500).json({ message: error.message, data: null });
   }
 };
 
-const updateCartById = async (req, res) => {
+const addProductToCart = async (req, res) => {
   const { id } = req.params;
-  const updateCart = req.body;
+  const { productId } = req.body;
   try {
-    const cart = await cartService.updateCartById(id, updateCart);
+    const cart = await cartService.addProductToCart(id, productId);
+    await productService.changeStock(productId, -1);
     res.status(200).json(cart);
   } catch (error) {
     res.status(500).json({ message: error.message, data: null });
   }
 };
 
-const deleteCartById = async (req, res) => {
-  const { id } = req.params;
+const removeProductFromCart = async (req, res) => {
+  const { id, productId } = req.params;
   try {
-    const cart = await cartService.deleteCartById(id);
+    const cart = await cartService.removeProductFromCart(id, productId);
+    await productService.changeStock(productId, cart.quantity);
     res.status(200).json(cart);
   } catch (error) {
     res.status(500).json({ message: error.message, data: null });
   }
 };
 
-module.exports = { getCartById, createCart, updateCartById, deleteCartById };
+module.exports = { getCartByUserId, createCart, addProductToCart, removeProductFromCart };
