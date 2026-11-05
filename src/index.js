@@ -7,7 +7,7 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors({
-  origin: 'http://angular-m1-t4.web.app',
+  origin: 'https://angular-m1-t4.web.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 
