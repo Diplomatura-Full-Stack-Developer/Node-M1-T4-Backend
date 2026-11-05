@@ -22,20 +22,6 @@ Realizar peticiones reales y preparar ambos entornos para despliegue.
 
 ### Capturas de pantallas:
 
-![MongoDB Compass Connection](./Node-M1-T4-Backend/assets/images/MongoDbCompass.png)
-
-![Welcome](./Node-M1-T4-Backend/assets/images/Welcome.png)
-
-![Get Products](./Node-M1-T4-Backend/assets/images/GetAllProducts.png)
-
-![Get Product by ID](./Node-M1-T4-Backend/assets/images/GetProductById.png)
-
-![Create Product](./Node-M1-T4-Backend/assets/images/CreateProduct.png)
-
-![Delete Product](./Node-M1-T4-Backend/assets/images/DeleteProductById.png)
-
-![Update Product](./Node-M1-T4-Backend/assets/images/UpdateProductById.png)
-
 ### Pasos para la ejecución local:
 
 1. Clonar el repositorio:
@@ -44,13 +30,13 @@ Realizar peticiones reales y preparar ambos entornos para despliegue.
 git clone https://github.com/Diplomatura-Full-Stack-Developer/Node-M1-T4
 ```
 
-2. Instalar las dependencias para Backend y Frontend:
+2. Instalar las dependencias.
 
 ```bash
 npm install
 ```
 
-3. Ejecutar el script de la aplicación en modo desarrollo para Backend y Frontend:
+3. Ejecutar el script de la aplicación en modo desarrollo.
 
 ```bash
 npm run dev
