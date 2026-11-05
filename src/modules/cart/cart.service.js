@@ -16,6 +16,11 @@ const getCartByUserId = async (userId) => {
 
 const createCart = async (userId, productId) => {
   try {
+
+    const cart = await Cart.findOne({ userId });
+    if (cart) {
+      return addProductToCart(cart._id, productId);
+    }
     const newCart = await Cart.create({ userId, products: [{ productId, quantity: 1 }] });
     return {
       cartId: newCart._id,
