@@ -14,13 +14,28 @@ Conectar un frontend (React o Angular) a un backend en Express.
 
 Realizar peticiones reales y preparar ambos entornos para despliegue.
 
-### Consideraciones:
+### Consideraciones del backend:
 
 - Se establece una organización de archivos por funcionalidad o dominio de negocio. Las funcionalidades son las de productos, usuarios y carrito.
 
 - Se genera una conexion con una base de datos MongoDB.
 
-### Capturas de pantallas:
+- Las imagenes de los productos se mantienen como datos estàticos a los fines de simplificar el proyecto. En caso que se quiera cargar imagenes de forma dinámica es conveniente guardar esas imagenes en un servidor como por ejemplo **Cloudinary**.
+
+- Se realiza el despliegue para producción en Render. En Render se configuran las variables de entorno para que se pueda conectar a la base de datos de MongoDB.
+
+- Para que la aplicación pueda correr en el navegador es necesaria la configuración del **CORS**.
+
+```javascript
+app.use(
+  cors({
+    origin: ['https://angular-m1-t4.web.app', 'http://localhost:4200'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  }),
+);
+```
+
+- Los passwords que generan los clientes se cifran con **bcrypt** para mayor seguridad.
 
 ### Pasos para la ejecución local:
 
