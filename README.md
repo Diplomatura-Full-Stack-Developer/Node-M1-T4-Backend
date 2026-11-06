@@ -56,6 +56,18 @@ npm install
 npm run dev
 ```
 
+### Pasos para el despliegue en Render:
+
+1. Crear un nuevo repositorio en GitHub.
+
+2. Crear una cuenta en Render.
+
+3. Crear un nuevo proyecto en Render.
+
+4. Configurar las variables de entorno en Render.
+
+5. Desplegar la aplicación en Render desde el repositorio en GitHub.
+
 ### Recursos utilizados:
 
 - Node JS - Versión 24.20.0 ([https://nodejs.org/es/download/](https://nodejs.org/es/download/))
