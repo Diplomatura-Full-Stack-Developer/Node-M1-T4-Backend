@@ -16,14 +16,13 @@ Realizar peticiones reales y preparar ambos entornos para despliegue.
 
 ### Consideraciones del backend:
 
-- Se establece una organización de archivos por funcionalidad o dominio de negocio. Las funcionalidades son las de productos, usuarios y carrito.
+No se pretende desarrollar una aplicación completa, sino establecer algunas funcionalidades que se aprendieron durante el curso y a los fines de cumplir con las consignas de la tarea.<br>
 
-- Se genera una conexion con una base de datos MongoDB.
-
-- Las imagenes de los productos se mantienen como datos estàticos a los fines de simplificar el proyecto. En caso que se quiera cargar imagenes de forma dinámica es conveniente guardar esas imagenes en un servidor como por ejemplo **Cloudinary**.
-
-- Se realiza el despliegue para producción en Render. En Render se configuran las variables de entorno para que se pueda conectar a la base de datos de MongoDB.
-
+- Se establece una organización de archivos por funcionalidad o dominio de negocio. Las funcionalidades son las de productos, usuarios y carrito.<br>
+- Se genera una conexion con una base de datos MongoDB.<br>
+- En el esquema del carrito no se repiten los datos del producto, sino que se crea una relación entre el carrito y los productos cargados y entre el carrito y el usuario. De esta forma existirá una relación uno a uno entre el carrito y el usuario.<br>
+- Las imagenes de los productos se mantienen como datos estàticos a los fines de simplificar el proyecto. En caso que se quiera cargar imagenes de forma dinámica es conveniente guardar esas imagenes en un servidor como por ejemplo **Cloudinary**.<br>
+- Se realiza el despliegue para producción en Render. En Render se configuran las variables de entorno para que se pueda conectar a la base de datos de MongoDB.<br>
 - Para que la aplicación pueda correr en el navegador es necesaria la configuración del **CORS**.
 
 ```javascript
