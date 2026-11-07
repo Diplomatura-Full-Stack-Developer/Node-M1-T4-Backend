@@ -8,8 +8,8 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 3,
-    maxlength: 50,
-    message: "El nombre debe tener al menos 3 caracteres y menos de 50 caracteres",
+    maxlength: 20,
+    message: "El nombre debe tener al menos 3 caracteres y menos de 20 caracteres",
   },
   email: {
     type: String,
